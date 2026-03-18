@@ -90,9 +90,10 @@
     }
     .hero-layout {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       align-items: center;
+      min-height: calc(100vh - 68px);
     }
     header::before {
       content: '';
@@ -318,20 +319,25 @@
     .footer-right a:hover { color: var(--blue); }
 
     /* AVATAR */
+    .hero-right-panel {
+      background: radial-gradient(ellipse 80% 70% at 60% 50%, rgba(79,142,247,0.07) 0%, transparent 70%);
+      border-left: 1px solid var(--border);
+      padding: 40px;
+    }
     .hero-avatar-wrap {
       position: relative;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      min-height: 420px;
+      min-height: 100%;
+      height: 100%;
     }
     .avatar-glow {
       position: absolute;
-      width: 360px; height: 360px;
+      width: 520px; height: 520px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(79,142,247,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
       animation: glowPulse 3s ease-in-out infinite;
-      bottom: 0;
     }
     @keyframes glowPulse {
       0%,100% { transform: scale(1); opacity: 0.7; }
@@ -339,19 +345,17 @@
     }
     .avatar-ring {
       position: absolute;
-      width: 370px; height: 370px;
+      width: 540px; height: 540px;
       border-radius: 50%;
-      border: 1px solid rgba(79,142,247,0.18);
+      border: 1px solid rgba(79,142,247,0.15);
       animation: ringRotate 14s linear infinite;
-      bottom: -15px;
     }
     .avatar-ring-2 {
       position: absolute;
-      width: 420px; height: 420px;
+      width: 620px; height: 620px;
       border-radius: 50%;
       border: 1px dashed rgba(79,142,247,0.07);
       animation: ringRotate 22s linear infinite reverse;
-      bottom: -40px;
     }
     @keyframes ringRotate { to { transform: rotate(360deg); } }
 
@@ -372,10 +376,10 @@
       z-index: 5;
     }
     .float-badge i { color: var(--blue); font-size: 0.82rem; }
-    .float-badge.fb1 { top: 60px;   right: -20px; animation: fb 4s ease-in-out infinite 0.0s; }
-    .float-badge.fb2 { bottom: 100px; right: -30px; animation: fb 4s ease-in-out infinite 0.8s; }
-    .float-badge.fb3 { bottom: 80px;  left: -20px; animation: fb 4s ease-in-out infinite 1.6s; }
-    .float-badge.fb4 { top: 50px;   left: -30px; animation: fb 4s ease-in-out infinite 2.4s; }
+    .float-badge.fb1 { top: 40px;    right: 10px;  animation: fb 4s ease-in-out infinite 0.0s; }
+    .float-badge.fb2 { bottom: 120px; right: 0px;   animation: fb 4s ease-in-out infinite 0.8s; }
+    .float-badge.fb3 { bottom: 100px; left: 10px;   animation: fb 4s ease-in-out infinite 1.6s; }
+    .float-badge.fb4 { top: 50px;    left: 0px;    animation: fb 4s ease-in-out infinite 2.4s; }
     @keyframes fb {
       0%,100% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
@@ -384,23 +388,22 @@
     .avatar-img-wrap {
       position: relative;
       z-index: 2;
-      width: 340px;
-      height: 340px;
+      width: min(520px, 90%);
+      height: min(520px, 90%);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       animation: memojiFloat 5s ease-in-out infinite;
-      filter: drop-shadow(0 20px 40px rgba(79,142,247,0.25));
+      filter: drop-shadow(0 30px 60px rgba(79,142,247,0.3));
     }
     @keyframes memojiFloat {
       0%,100% { transform: translateY(0px) rotate(-1deg); }
-      50%      { transform: translateY(-14px) rotate(1deg); }
+      50%      { transform: translateY(-18px) rotate(1deg); }
     }
     .memoji-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      object-position: bottom;
     }
 
     /* REVEAL */
@@ -492,7 +495,7 @@
       </div>
 
       <!-- RIGHT: avatar -->
-      <div class="hero-avatar-wrap">
+      <div class="hero-avatar-wrap hero-right-panel">
         <div class="avatar-glow"></div>
         <div class="avatar-ring"></div>
         <div class="avatar-ring-2"></div>
